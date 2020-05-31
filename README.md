@@ -2,6 +2,7 @@
 EXIF情報を元に画像を回転するzshスクリプト
 
 ## Usage
+ImageRotation.zsh にパスを通したあと、
 回転したい画像が入っているディレクトリに移動し、
 ```
 $ ImageRotation
