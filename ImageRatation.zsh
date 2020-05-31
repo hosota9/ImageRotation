@@ -7,11 +7,11 @@
 function ImageRotation() {
 
   # ディレクトリ内のJPEGファイル数を取得
-  cntAll=`ls -U1 *.jpg | wc -l | tr -d ' '`
+  cntAll=`ls -U1 *.{jpg,jpeg} | wc -l | tr -d ' '`
 
   # 各ファイルのOrientationを取得
   cntNow="0"
-  for file in *.jpg
+  for file in *.{jpg,jpeg}
   do
     cntNow=`echo $(( $cntNow + 1 ))`
     orientation=`exiftool $file | grep Orientation | awk -F": " '{print $2}'`
