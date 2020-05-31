@@ -35,21 +35,22 @@ function ImageRotation() {
     orientation=`exiftool $file | grep Orientation | awk -F": " '{print $2}'`
     echo "$file ($cntNow/$cntAll) : $orientation" 
 
-    # orientationが"Rotate 90 CW"の場合、画像回転
-    if [ "$orientation" = "Rotate 90 CW" ]; then
-      rotate 90 "$file"
-    fi
+    # orientationに応じて画像回転
+    case "$orientation" in
 
-    # orientationが"Rotate 180"の場合、画像回転
-    if [ "$orientation" = "Rotate 180" ]; then
-      rotate 180 "$file"
-    fi
+      "Rotate 90 CW" )
+        rotate 90 "$file"
+        ;;
 
-    # orientationが"Rotate 270 CW"の場合、画像回転
-    if [ "$orientation" = "Rotate 270 CW" ]; then
-      rotate 270 "$file"
-    fi
+      "Rotate 180" )
+        rotate 180 "$file"
+        ;;
 
+      "Rotate 270 CW" )
+        rotate 270 "$file"
+        ;;
+
+    esac
   done
 }
 
